@@ -1,32 +1,30 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id='a'>
+      <bar/>
+        <component id='a' :is='$route.meta.lay||"none"'/>
+      <foo/>
   </div>
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+  components:{
+    bar:()=>import('@/components/bar.vue'),
+    none:()=>import('@/layout/none.vue'),
+    foo:()=>import('@/components/foo')
+  }
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+</script>
+<style lang='scss'>
+  a{
+    cursor:pointer;
+  }
+  #a{
+    background:fixed url('/img/bg.jpg') no-repeat;
+    background-size:100% 100%;
+  }#b{
+    background:rgba(255,255,255,0.6);
+  }
+  .point{
+    cursor: pointer;
+  }
 </style>
